@@ -1,0 +1,33 @@
+---
+header:
+  version: 11
+machine: raspberrypi3-64
+distro: alarm
+target: rpi-alarm-image
+repos:
+  meta-alarm:
+    path: meta-alarm
+  poky:
+    url: https://github.com/yoctoproject/poky
+    commit: 7500a08bd1eb77421364b661afc63d4042a6aa8c
+    path: layers/poky
+    layers:
+      meta:
+      meta-poky:
+      meta-yocto-bsp:
+  meta-openembedded:
+    url:  https://github.com/openembedded/meta-openembedded
+    commit: 491671faee11ea131feab5a3a451d1a01deb2ab1
+    path: layers/meta-openembedded
+    layers:
+      meta-oe:
+      meta-python:
+      meta-networking:
+  meta-raspberrypi:
+    url: https://github.com/agherzan/meta-raspberrypi
+    commit: bce7b3acd2e0d9d127fcb57eae4a512bd7e7924a
+    path: layers/meta-raspberrypi
+
+env:
+  SSTATE_DIR: /home/maxime/sstate-cache
+  DL_DIR: /home/maxime/yocto-downloads

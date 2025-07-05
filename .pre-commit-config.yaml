@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+  - repo: https://github.com/priv-kweihmann/oelint-adv
+    rev: 8.1.2
+    hooks:
+      - id: oelint-adv
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.10.0
+    hooks:
+    - id: shellcheck
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v9.0.1
+    hooks:
+      - id: cspell
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.1.0
+    hooks:
+      - id: codespell
