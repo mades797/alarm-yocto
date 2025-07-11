@@ -1,5 +1,5 @@
 [Unit]
-Description=Alarm service
+Description=Alarm controller service
 
 [Install]
 WantedBy=multi-user.target
@@ -7,4 +7,4 @@ WantedBy=multi-user.target
 [Service]
 Type=simple
 Environment="PYTHONPATH=/opt/alarm"
-ExecStart=/usr/bin/alarm
+ExecStart=/usr/bin/alarm-controller

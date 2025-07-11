@@ -14,21 +14,28 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0-only;md5=c79ff39f19dfec
 SRC_URI = "\
     git://github.com/mades797/alarm.git;protocol=https;branch=main \
     file://alarm.service \
+    file://alarm-controller.service \
 "
 
-SRCREV = "c7934ce9bea03daeb1253a672e9bbb7a4f006093"
+SRCREV = "a704e00193e205458c18e40090c31e0a5e1ed25a"
 # S = "${UNPACKDIR}"
 FILES:${PN} += "${systemd_unitdir}/system/alarm.service"
+FILES:${PN} += "${systemd_unitdir}/system/alarm-controller.service"
+FILES:${PN} += "/opt/alarm/common.py"
 RDEPENDS:${PN} += "python3-core"
 BBCLASSEXTEND = "native"
 
 inherit systemd
 
-SYSTEMD_SERVICE:${PN} = "alarm.service"
+SYSTEMD_SERVICE:${PN} = "alarm-controller.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 do_install:append () {
     install -d ${D}${systemd_unitdir}
+    install -d ${D}/opt/${PN}
     install -Dm 0644 ${WORKDIR}/alarm.service ${D}${systemd_unitdir}/system/alarm.service
+    install -Dm 0644 ${WORKDIR}/alarm-controller.service ${D}${systemd_unitdir}/system/alarm-controller.service
     install -Dm 0755 ${WORKDIR}/git/main.py ${D}${USRBINPATH}/alarm
+    install -Dm 0755 ${WORKDIR}/git/controller.py ${D}${USRBINPATH}/alarm-controller
+    install -Dm 0644 ${WORKDIR}/git/common.py ${D}/opt/${PN}/common.py
 }

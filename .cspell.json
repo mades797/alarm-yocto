@@ -41,6 +41,7 @@
         "packagegroup",
         "procps",
         "pycache",
+        "PYTHONPATH",
         "raspberrypi",
         "RDEPENDS",
         "ROOTFS",

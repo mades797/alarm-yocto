@@ -4,3 +4,5 @@
 **/__pycache__/
 build/
 layers/
+**/ssh_host_*_key
+**/ssh_host_*_key.pub
